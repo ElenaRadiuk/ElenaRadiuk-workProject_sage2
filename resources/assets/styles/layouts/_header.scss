@@ -1,0 +1,30 @@
+.banner .nav li {
+  @extend .nav-item;
+}
+
+.banner .nav a {
+  @extend .nav-link;
+}
+
+//.header .nav li {
+//  @extend .nav-item;
+//}
+//
+//.header .nav a {
+//  @extend .nav-link;
+//}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  .header-logo {
+    margin-right: 20px;
+  }
+
+  .header-nav-primary {
+    li {
+      padding: 0 25px;
+    }
+  }
+}
