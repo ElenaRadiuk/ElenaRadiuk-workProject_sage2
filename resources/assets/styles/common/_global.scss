@@ -49,3 +49,13 @@ input {
 }
 
 textarea { @extend input }
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../fonts/GOTHIC.ttf") format("truetype");
+}

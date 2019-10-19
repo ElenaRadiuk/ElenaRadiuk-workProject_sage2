@@ -2,8 +2,22 @@
 @import "~bootstrap/scss/functions";
 
 $theme-colors: (
-  primary: #27ae60
+  primary: #29497d
 );
+
+$big-font: 160px;
+$h3-font-size: 44px;
+$h4-font-size: 36px;
+
+@mixin gothic-fonts {
+  font-family: "Century Gothic", Serif;
+  font-weight: normal;
+}
+
+@mixin noto-fonts {
+  font-family: "Noto Sans", Serif;
+  font-weight: bold;
+}
 
 $grey: #fff;
 $dark-blue: #29497d;
