@@ -1,4 +1,14 @@
 {{--@php(the_content())--}}
+<section class="main-slider">
+  <div class="main-slider_items">
+    <div><h3>1</h3></div>
+    <div><h3>2</h3></div>
+    <div><h3>3</h3></div>
+    <div><h3>4</h3></div>
+    <div><h3>5</h3></div>
+    <div><h3>6</h3></div>
+  </div>
+</section>
 
 <section class="our-promise">
     <div class="container">

@@ -1,0 +1,333 @@
+npm install slick-carousel
+1) D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\styles\main.scss
+
+add:
+// Import Slick
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+
+2) D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\scripts\main.js
+// Import Slick
+import 'slick-carousel/slick/slick.min';
+
+
+3) D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\scripts\routes\home.js
+export default {
+  init() {
+    // JavaScript to be fired on the home page
+    $('.main-slider_items').slick();
+  },
+  finalize() {
+    // JavaScript to be fired on the home page, after the init JS
+  },
+};
+
+
+4) D:\OSPanel\domains\sage\wp-content\themes\sage\resources\views\partials\content-homepage.blade.php
+<section class="main-slider">
+...
+</section>
+
+5) D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\styles\common\_variables.scss
+add mix:
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+use:
+.header-title {
+   font-size: 2rem;
+
+   @include for-phone-only {
+      font-size: 1rem;
+   }
+}
+
+6) menu
+<a id="hamburger-icon" href="#" title="Menu">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </a>
+
+css:
+.burger-line{
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        width: 35px;
+        height: 2px;
+        background-color: #9d9d9d;
+        transition: .5s all;
+    }
+
+    .second, .third{
+        top: 27px;
+    }
+
+    .fourth{
+        top: 38px;
+    }
+
+    .menu-wrapper{
+        display: block;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        transform: translateY(100%);
+        max-height: 0;
+        font-size: 0;
+        overflow: hidden;
+        transition: .5s all;
+    }
+
+    .menu-wrapper a{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-decoration: none;
+        background-color: white;
+    }
+
+    .menu-wrapper a:hover{
+        background-color: white;
+    }
+
+    .menu-wrapper.show{
+        max-height: 500px;
+        font-size: 16px;
+    }
+*************************************
+#hamburger-icon {
+        width: 40px;
+        height: 20px;
+        position: absolute;
+        right: 5px;
+        top: 18px;
+        display: block;
+        margin: 0;
+    }
+    #hamburger-icon .line {
+        display: block;
+        background: #005bb2;
+        width: 36px;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        border-radius: 4px;
+        transition: all 0.4s;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+    }
+    #hamburger-icon .line.line-1 {
+        top: 0;
+    }
+    #hamburger-icon .line.line-2 {
+        top: 50%;
+    }
+    #hamburger-icon .line.line-3 {
+        top: 100%;
+    }
+    #hamburger-icon:hover .line-1, #hamburger-icon:focus .line-1 {
+        transform: translateY(-1px);
+        -webkit-transform: translateY(-1px);
+        -moz-transform: translateY(-1px);
+    }
+    #hamburger-icon:hover .line-3, #hamburger-icon:focus .line-3 {
+        transform: translateY(1px);
+        -webkit-transform: translateY(1px);
+        -moz-transform: translateY(1px);
+    }
+    #hamburger-icon.active .line-1 {
+        transform: translateY(9px) translateX(0px) rotate(45deg);
+        -webkit-transform: translateY(9px) translateX(0px) rotate(45deg);
+        -moz-transform: translateY(9px) translateX(0px) rotate(45deg);
+    }
+    #hamburger-icon.active .line-2 {
+        opacity: 0;
+    }
+    #hamburger-icon.active .line-3 {
+        transform: translateY(-11px) translateX(0px) rotate(-45deg);
+        -webkit-transform: translateY(-11px) translateX(0px) rotate(-45deg);
+        -moz-transform: translateY(-11px) translateX(0px) rotate(-45deg);
+    }
+
+
+
+    .header .header-logo {
+    flex none
+    }
+    img {
+    max-width: 50px;
+    height: auto;
+    }
+***************************
+jQuery(document).ready(function($) {
+    $("#menu-topmenu .withscroll, .main-text button").on("click","a", function (event) {
+        event.preventDefault();
+
+        var id  = $(this).attr('href'),
+            top = $(id).offset().top;
+        $('body,html').animate({scrollTop: top}, 1500);
+    });
+
+    var hamburger = $('#hamburger-icon');
+    var showMenu = $('.menu-wrapper');
+    hamburger.click(function() {
+        hamburger.toggleClass('active');
+        showMenu.toggleClass('show');
+        return false;
+    });
+
+});
+
+6) исправить ховер global
+- a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+- D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\images
+добавить svg phone
+
+- редактировать путь, чтобы находились картинки и шрифты
+D:\OSPanel\domains\sage\wp-content\themes\sage\resources\assets\config.json
+
+"publicPath": "/wp-content/themes/sage"
+
+- container-sage in
+D:\OSPanel\domains\sage\wp-content\themes\sage\resources\views\partials\header.blade.php
+
+- global
+.container-sage {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header.css*****
+
+
+.header {
+  @include gothic-fonts;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+
+  .header-logo {
+    margin-right: 20px;
+    flex: none;
+
+    img {
+      max-width: 60px;
+      height: auto;
+
+      @include for-tablet-landscape-up {
+        max-width: 100px;
+      }
+    }
+  }
+
+  .header-nav-primary {
+    ul {
+      align-items: center;
+
+      li {
+        padding: 0 15px;
+
+        a {
+          color: $menu-color;
+          font-size: 16px;
+
+          &:hover {
+            color: $dark-blue;
+          }
+
+          @include for-desktop-up {
+            font-size: 18px;
+          }
+        }
+
+        &:last-of-type {
+          margin-left: 25px;
+
+          a {
+            color: $grey;
+            display: inline-block;
+            padding: 13px 30px 13px 44px;
+            position: relative;
+
+            &:hover {
+              color: $grey;
+            }
+
+            &::before {
+              position: absolute;
+              content: url("../images/callUs.png");
+              color: $grey;
+              left: 23px;
+            }
+          }
+
+          @include for-desktop-up {
+            margin-left: 85px;
+          }
+        }
+
+        @include for-desktop-up {
+          padding: 0 25px;
+        }
+      }
+    }
+  }
+}
+
+
+<header>
+    <div class="container-sage">
+      <div class="header">
+          {{--<a class="brand" href="{{ home_url('/') }}">{{ get_bloginfo('name', 'display') }}</a>--}}
+          {{--<a class="brand" href="{{ home_url('/') }}">{{ the_custom_logo( $blog_id ) }}</a>--}}
+          <div class="header-logo">
+            @php(the_custom_logo( $blog_id ))
+          </div>
+          <a id="hamburger-icon" href="#" title="Menu">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+          </a>
+          <nav class="header-nav-primary">
+            @if (has_nav_menu('primary_navigation'))
+              {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']) !!}
+            @endif
+          </nav>
+    </div>
+  </div>
+</header>
+
+

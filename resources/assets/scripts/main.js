@@ -10,6 +10,9 @@ import common from './routes/common';
 import home from './routes/home';
 import aboutUs from './routes/about';
 
+// Import Slick
+import 'slick-carousel/slick/slick.min';
+
 /** Populate Router instance with DOM routes */
 const routes = new Router({
   // All pages
